@@ -3,12 +3,12 @@ var TowerDefense = TowerDefense || {};
 TowerDefense.Engine = (function(exports) {
     'use strict';
 
-    function Engine(canvas) {
+    function Engine(map, canvas) {
         this.canvas = canvas;
 
         this.fpsCounter = new exports.TowerDefense.Fps();
 
-        this.canvas.register(new exports.TowerDefense.UserInterface.Map());
+        this.canvas.register(new exports.TowerDefense.UserInterface.Map(map));
         this.canvas.register(new exports.TowerDefense.UserInterface.Fps(this.fpsCounter));
     }
 
