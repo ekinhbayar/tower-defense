@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
+    display: block;
+}
+
+@font-face {
+    font-family: 'Interface';
+    src: url('../font/fjallaone-regular-webfont.woff2') format('woff2'),
+    url('../font/fjallaone-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
