@@ -13,9 +13,9 @@ TowerDefense.UserInterface.Spawn = (function() {
         canvas.context.fillStyle = 'red';
 
         if (this.x === 0 || this.x === canvas.element.width) {
-            canvas.context.fillRect(this.x * canvas.scale.x, this.y * canvas.scale.y, 5 * canvas.scale.x, 20 * canvas.scale.y);
+            canvas.context.fillRect((this.x + canvas.x) * canvas.scale.x, (this.y + canvas.y) * canvas.scale.y, 5 * canvas.scale.x, 20 * canvas.scale.y);
         } else {
-            canvas.context.fillRect(this.x * canvas.scale.x, this.y * canvas.scale.y, 20 * canvas.scale.x, 5 * canvas.scale.y);
+            canvas.context.fillRect((this.x + canvas.x) * canvas.scale.x, (this.y + canvas.y) * canvas.scale.y, 20 * canvas.scale.x, 5 * canvas.scale.y);
         }
     };
 

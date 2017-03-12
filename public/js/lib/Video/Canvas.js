@@ -16,6 +16,7 @@ TowerDefense.Video.Canvas = (function(exports) {
         this.y    = 0;
 
         this.dragging = {
+            started: false,
             enabled: false,
             start: {
                 x: 0,
@@ -28,8 +29,8 @@ TowerDefense.Video.Canvas = (function(exports) {
 
         exports.addEventListener('resize', this.resize.bind(this), false);
         document.addEventListener('mousewheel', this.scroll.bind(this), false);
-        //document.getElementById('game').addEventListener('dragstart', this.drag.bind(this), false);
         document.addEventListener('mousedown', this.mouseDown.bind(this), false);
+        document.addEventListener('mousemove', this.mouseMove.bind(this), false);
         document.addEventListener('mouseup', this.mouseUp.bind(this), false);
 
         this.resize();
@@ -57,31 +58,36 @@ TowerDefense.Video.Canvas = (function(exports) {
 
     Canvas.prototype.mouseDown = function(e) {
         this.dragging = {
-            enabled: true,
+            started: true,
+            enabled: false,
             x: e.clientX,
             y: e.clientY
         };
     };
 
-    Canvas.prototype.mouseUp = function(e) {
-        if (Math.abs(e.clientX - this.dragging.x) > 10 || Math.abs(e.clientY - this.dragging.y) > 10) {
-            this.x = e.clientX - this.dragging.x;
-            this.y = e.clientY - this.dragging.y;
-
-            if (this.x < 0) {
-                this.x = 0;
-            }
-
-            if (this.y < 0) {
-                this.y = 0;
-            }
+    Canvas.prototype.mouseMove = function(e) {
+        if (!this.dragging.started) {
+            return;
         }
 
-        this.dragging = {
-            enabled: false,
-            x: 0,
-            y: 0
-        };
+        if (!this.dragging.enabled && Math.abs(e.clientX - this.dragging.x) > 10 || Math.abs(e.clientY - this.dragging.y) > 10) {
+            this.dragging.enabled = true;
+        }
+
+        if (!this.dragging.enabled) {
+            return;
+        }
+
+        this.x = this.x + e.clientX - this.dragging.x;
+        this.y = this.y + e.clientY - this.dragging.y;
+
+        this.dragging.x = e.clientX;
+        this.dragging.y = e.clientY;
+    };
+
+    Canvas.prototype.mouseUp = function() {
+        this.dragging.started = false;
+        this.dragging.enabled = false;
     };
 
     Canvas.prototype.rescale = function() {

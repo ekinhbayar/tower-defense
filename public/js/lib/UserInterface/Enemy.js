@@ -17,7 +17,7 @@ TowerDefense.UserInterface.Enemy = (function() {
     Enemy.prototype.draw = function(canvas) {
         canvas.context.fillStyle = '#ff3300';
 
-        canvas.context.fillRect(this.x, this.y, 5 * canvas.scale.x, 5 * canvas.scale.y);
+        canvas.context.fillRect((this.x + canvas.x) * canvas.scale.x, (this.y + canvas.y) * canvas.scale.y, 5 * canvas.scale.x, 5 * canvas.scale.y);
     };
 
     return Enemy;
