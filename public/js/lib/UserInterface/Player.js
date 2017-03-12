@@ -13,7 +13,7 @@ TowerDefense.UserInterface.Player = (function() {
         this.y    = player.y;
     }
 
-    Player.prototype.draw = function(canvasContext, canvas) {
+    Player.prototype.draw = function(scale, canvasContext, canvas) {
         if (this.id === this.authenticatedPlayer.id) {
             canvasContext.fillStyle = 'green';
         } else {
@@ -21,9 +21,9 @@ TowerDefense.UserInterface.Player = (function() {
         }
 
         if (this.x === 0 || this.x === canvas.width) {
-            canvasContext.fillRect(this.x, this.y, 5, 20);
+            canvasContext.fillRect(this.x * scale.x, this.y * scale.y, 5 * scale.x, 20 * scale.y);
         } else {
-            canvasContext.fillRect(this.x, this.y, 20, 5);
+            canvasContext.fillRect(this.x * scale.x, this.y * scale.y, 20 * scale.x, 5 * scale.y);
         }
     };
 

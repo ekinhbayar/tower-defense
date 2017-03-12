@@ -32,6 +32,30 @@
                 name: 'Excel',
                 x: 880,
                 y: 0
+            },
+            {
+                id: 5,
+                name: 'Top Left',
+                x: 0,
+                y: 0
+            },
+            {
+                id: 6,
+                name: 'Top Right',
+                x: 1180,
+                y: 0
+            },
+            {
+                id: 7,
+                name: 'Bottom Left',
+                x: 0,
+                y: 780
+            },
+            {
+                id: 8,
+                name: 'Bottom Right',
+                x: 1100,
+                y: 780
             }
         ],
         path: [

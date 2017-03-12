@@ -9,10 +9,10 @@ TowerDefense.UserInterface.Path = (function() {
         this.y = y;
     }
 
-    Path.prototype.draw = function(canvasContext) {
+    Path.prototype.draw = function(scale, canvasContext) {
         canvasContext.fillStyle = 'gray';
 
-        canvasContext.fillRect(this.x, this.y, 20, 20);
+        canvasContext.fillRect(this.x * scale.x, this.y * scale.y, 20 * scale.x, 20 * scale.y);
     };
 
     return Path;

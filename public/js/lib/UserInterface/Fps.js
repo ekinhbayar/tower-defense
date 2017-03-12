@@ -8,7 +8,7 @@ TowerDefense.UserInterface.Fps = (function() {
         this.fpsCounter = fpsCounter;
     }
 
-    Fps.prototype.draw = function(canvasContext) {
+    Fps.prototype.draw = function(scale, canvasContext) {
         canvasContext.font      = '24px Interface';
         canvasContext.fillStyle = 'white';
 
