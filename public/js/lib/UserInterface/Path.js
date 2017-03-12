@@ -10,9 +10,13 @@ TowerDefense.UserInterface.Path = (function() {
     }
 
     Path.prototype.draw = function(canvas) {
-        canvas.context.fillStyle = 'gray';
+        const tile = new Image();
 
-        canvas.context.fillRect((this.x + canvas.x) * canvas.scale.x, (this.y + canvas.y) * canvas.scale.y, 20 * canvas.scale.x, 20 * canvas.scale.y);
+        tile.addEventListener('load', () => {
+            canvas.context.drawImage(tile, (this.x + canvas.x) * canvas.scale.x, (this.y + canvas.y) * canvas.scale.y, 20 * canvas.scale.x, 20 * canvas.scale.y);
+        });
+
+        tile.src = 'img/road.jpg';
     };
 
     return Path;
