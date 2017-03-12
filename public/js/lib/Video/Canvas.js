@@ -28,7 +28,7 @@ TowerDefense.Video.Canvas = (function(exports) {
         this.context = this.canvas.getContext('2d');
 
         exports.addEventListener('resize', this.resize.bind(this), false);
-        document.addEventListener('mousewheel', this.scroll.bind(this), false);
+        document.addEventListener('wheel', this.scroll.bind(this), false);
         document.addEventListener('mousedown', this.mouseDown.bind(this), false);
         document.addEventListener('mousemove', this.mouseMove.bind(this), false);
         document.addEventListener('mouseup', this.mouseUp.bind(this), false);
