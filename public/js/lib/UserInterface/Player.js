@@ -13,17 +13,17 @@ TowerDefense.UserInterface.Player = (function() {
         this.y    = player.y;
     }
 
-    Player.prototype.draw = function(scale, canvasContext, canvas) {
+    Player.prototype.draw = function(canvas) {
         if (this.id === this.authenticatedPlayer.id) {
-            canvasContext.fillStyle = 'green';
+            canvas.context.fillStyle = 'green';
         } else {
-            canvasContext.fillStyle = 'yellow';
+            canvas.context.fillStyle = 'yellow';
         }
 
-        if (this.x === 0 || this.x === canvas.width) {
-            canvasContext.fillRect(this.x * scale.x, this.y * scale.y, 5 * scale.x, 20 * scale.y);
+        if (this.x === 0 || this.x === canvas.element.width) {
+            canvas.context.fillRect(this.x * canvas.scale.x, this.y * canvas.scale.y, 5 * canvas.scale.x, 20 * canvas.scale.y);
         } else {
-            canvasContext.fillRect(this.x * scale.x, this.y * scale.y, 20 * scale.x, 5 * scale.y);
+            canvas.context.fillRect(this.x * canvas.scale.x, this.y * canvas.scale.y, 20 * canvas.scale.x, 5 * canvas.scale.y);
         }
     };
 

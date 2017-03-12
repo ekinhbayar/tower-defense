@@ -9,13 +9,13 @@ TowerDefense.UserInterface.Spawn = (function() {
         this.y = y;
     }
 
-    Spawn.prototype.draw = function(scale, canvasContext, canvas) {
-        canvasContext.fillStyle = 'red';
+    Spawn.prototype.draw = function(canvas) {
+        canvas.context.fillStyle = 'red';
 
-        if (this.x === 0 || this.x === canvas.width) {
-            canvasContext.fillRect(this.x * scale.x, this.y * scale.y, 5 * scale.x, 20 * scale.y);
+        if (this.x === 0 || this.x === canvas.element.width) {
+            canvas.context.fillRect(this.x * canvas.scale.x, this.y * canvas.scale.y, 5 * canvas.scale.x, 20 * canvas.scale.y);
         } else {
-            canvasContext.fillRect(this.x * scale.x, this.y * scale.y, 20 * scale.x, 5 * scale.y);
+            canvas.context.fillRect(this.x * canvas.scale.x, this.y * canvas.scale.y, 20 * canvas.scale.x, 5 * canvas.scale.y);
         }
     };
 

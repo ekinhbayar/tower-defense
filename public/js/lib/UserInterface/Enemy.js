@@ -14,10 +14,10 @@ TowerDefense.UserInterface.Enemy = (function() {
         this.y += y;
     };
 
-    Enemy.prototype.draw = function(scale, canvasContext) {
-        canvasContext.fillStyle = '#ff3300';
+    Enemy.prototype.draw = function(canvas) {
+        canvas.context.fillStyle = '#ff3300';
 
-        canvasContext.fillRect(this.x, this.y, 5, 5);
+        canvas.context.fillRect(this.x, this.y, 5 * canvas.scale.x, 5 * canvas.scale.y);
     };
 
     return Enemy;

@@ -22,30 +22,30 @@ TowerDefense.UserInterface.Map = (function(exports) {
         this.enemy = new exports.TowerDefense.UserInterface.Enemy(map.spawn.x + 10, map.spawn.y - 5);
     }
 
-    Map.prototype.draw = function(scale, canvasContext, canvas) {
-        this.drawBackground(canvasContext, canvas);
-        this.drawPath(scale, canvasContext);
-        this.drawPlayers(scale, canvasContext, canvas);
+    Map.prototype.draw = function(canvas) {
+        this.drawBackground(canvas);
+        this.drawPath(canvas);
+        this.drawPlayers(canvas);
 
-        this.enemy.draw(scale, canvasContext);
+        this.enemy.draw(canvas);
 
-        this.spawn.draw(scale, canvasContext, canvas);
+        this.spawn.draw(canvas);
     };
 
-    Map.prototype.drawBackground = function(canvasContext, canvas) {
-        canvasContext.fillStyle = 'black';
-        canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+    Map.prototype.drawBackground = function(canvas) {
+        canvas.context.fillStyle = 'black';
+        canvas.context.fillRect(0, 0, canvas.element.width, canvas.element.height);
     };
 
-    Map.prototype.drawPath = function(scale, canvasContext) {
+    Map.prototype.drawPath = function(canvas) {
         this.paths.forEach((path) => {
-            path.draw(scale, canvasContext);
+            path.draw(canvas);
         });
     };
 
-    Map.prototype.drawPlayers = function(scale, canvasContext, canvas) {
+    Map.prototype.drawPlayers = function(canvas) {
         this.players.forEach((player) => {
-            player.draw(scale, canvasContext, canvas);
+            player.draw(canvas);
         });
     };
 
