@@ -96,14 +96,6 @@ TowerDefense.Video.Canvas = (function(exports) {
     Canvas.prototype.draw = function() {
         this.clear();
 
-        console.log({
-            scale: this.scale,
-            x: this.x,
-            y: this.y,
-            canvasContext: this.context,
-            canvas: this.canvas
-        });
-
         this.drawables.forEach((drawable) => {
             drawable.draw({
                 scale: this.scale,
