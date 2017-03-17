@@ -1,0 +1,18 @@
+{
+    "name": "ekinhbayar/tower-defense",
+    "description": "Tower Defense",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ekin H. Bayar",
+            "email": "ekin@coproductivity.com"
+        },
+        {
+            "name": "Pieter Hordijk",
+            "email": "info@pieterhordijk.com"
+        }
+    ],
+    "require": {
+        "amphp/aerys": "^0.4.7"
+    }
+}
