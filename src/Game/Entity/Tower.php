@@ -1,18 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Game\Entity;
 
-
-abstract class Tower {
-
+abstract class Tower
+{
     private $id;
+
     private $hitPoints;
+
     private $healthPoints;
 
     public function __construct(int $id, int $hitPoints, int $healthPoints)
     {
-        $this->id = $id;
-        $this->hitPoints = $hitPoints;
+        $this->id           = $id;
+        $this->hitPoints    = $hitPoints;
         $this->healthPoints = $healthPoints;
     }
 

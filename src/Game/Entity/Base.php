@@ -1,7 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Game\Entity;
-
 
 class Base extends Tower
 {
@@ -9,5 +8,4 @@ class Base extends Tower
     {
         parent::__construct($id, 2000, 30);
     }
-
 }

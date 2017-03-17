@@ -1,15 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Game\Entity;
-
 
 class Player
 {
     private $id;
+
     private $name;
+
     private $base;
+
     private $funds;
+
     private $towers;
+
     private $coordinates;
 
     public function __construct(
@@ -21,11 +25,11 @@ class Player
         int $funds = 5000
     )
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->base = $base;
-        $this->towers = $towers;
-        $this->funds  = $funds;
+        $this->id          = $id;
+        $this->name        = $name;
+        $this->base        = $base;
+        $this->towers      = $towers;
+        $this->funds       = $funds;
         $this->coordinates = $coordinates;
     }
 

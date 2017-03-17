@@ -1,18 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Game\Entity;
 
-
-class Enemy {
-
+class Enemy
+{
     private $coordinates;
+
     private $hitPoints;
+
     private $healthPoints;
 
     public function __construct(Coordinates $coordinates, int $hitPoints, int $healthPoints = 500)
     {
-        $this->coordinates = $coordinates;
-        $this->hitPoints = $hitPoints;
+        $this->coordinates  = $coordinates;
+        $this->hitPoints    = $hitPoints;
         $this->healthPoints = $healthPoints;
     }
 

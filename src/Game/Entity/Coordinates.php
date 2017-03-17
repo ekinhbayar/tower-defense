@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Game\Entity;
-
 
 class Coordinates
 {
     private $x;
+
     private $y;
 
     public function __construct(int $x, int $y)
