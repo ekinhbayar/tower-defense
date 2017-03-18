@@ -1,14 +1,14 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace Game\Entity\Tower;
 
 use Game\Entity\Coordinates;
 use Game\Entity\Tower;
 
-class Laser extends Tower
+class Flame extends Tower
 {
     public function __construct(int $id, Coordinates $coordinates)
     {
-        parent::__construct($id, $coordinates, 1500, 100, 2000);
+        parent::__construct($id, $coordinates, 1000, 75, 2000);
     }
 }
