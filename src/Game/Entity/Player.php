@@ -2,6 +2,8 @@
 
 namespace Game\Entity;
 
+use Game\Entity\Tower\Base;
+
 class Player
 {
     private $id;
