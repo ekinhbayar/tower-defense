@@ -1,6 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Game\Entity;
+namespace Game\Entity\Tower;
+
+use Game\Entity\Coordinates;
+use Game\Entity\Tower;
 
 class Factory
 {
@@ -8,7 +11,7 @@ class Factory
 
     public function build(string $towerType, Coordinates $coordinates): Tower
     {
-        $towerType = 'Game\Entity\Tower\\' . $towerType;
+        $towerType = __NAMESPACE__ . "\\" . $towerType;
 
         if (!$this->isValidType($towerType)) {
             throw new UnknownTowerTypeException($towerType);

@@ -4,8 +4,8 @@ namespace Game\Tests\Entity;
 
 use Game\Entity\Coordinates;
 use Game\Entity\Tower\Base;
-use Game\Entity\Factory;
-use Game\Entity\UnknownTowerTypeException;
+use Game\Entity\Tower\Factory;
+use Game\Entity\Tower\UnknownTowerTypeException;
 use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
