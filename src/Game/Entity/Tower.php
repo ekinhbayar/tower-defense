@@ -6,13 +6,25 @@ abstract class Tower
 {
     private $id;
 
+    private $unitPrice;
+
+    private $coordinates;
+
     private $hitPoints;
 
     private $healthPoints;
 
-    public function __construct(int $id, int $hitPoints, int $healthPoints)
+    public function __construct(
+        int $id,
+        Coordinates $coordinates,
+        int $unitPrice,
+        int $hitPoints,
+        int $healthPoints
+    )
     {
         $this->id           = $id;
+        $this->coordinates  = $coordinates;
+        $this->unitPrice    = $unitPrice;
         $this->hitPoints    = $hitPoints;
         $this->healthPoints = $healthPoints;
     }
@@ -20,6 +32,16 @@ abstract class Tower
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function getCoordinates(): Coordinates
+    {
+        return $this->coordinates;
+    }
+
+    public function getUnitPrice(): int
+    {
+        return $this->unitPrice;
     }
 
     public function getHitPoints(): int
@@ -30,5 +52,16 @@ abstract class Tower
     public function getHealthPoints(): int
     {
         return $this->healthPoints;
+    }
+
+    public function getTowerAsArray(): array
+    {
+        return [
+            'id'           => $this->id,
+            'coordinates'  => $this->coordinates,
+            'unitPrice'    => $this->unitPrice,
+            'hitPoints'    => $this->hitPoints,
+            'healthPoints' => $this->healthPoints
+        ];
     }
 }
