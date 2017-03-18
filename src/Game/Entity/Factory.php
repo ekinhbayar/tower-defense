@@ -6,7 +6,7 @@ class Factory
 {
     private $lastTowerId = -1;
 
-    public function build(string $towerType): Tower
+    public function build(string $towerType, Coordinates $coordinates): Tower
     {
         $towerType = 'Game\Entity\Tower\\' . $towerType;
 
@@ -16,7 +16,7 @@ class Factory
 
         $this->lastTowerId++;
 
-        return new $towerType($this->lastTowerId);
+        return new $towerType($this->lastTowerId, $coordinates);
     }
 
     private function isValidType(string $towerType): bool

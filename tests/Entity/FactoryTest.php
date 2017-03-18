@@ -2,6 +2,7 @@
 
 namespace Game\Tests\Entity;
 
+use Game\Entity\Coordinates;
 use Game\Entity\Tower\Base;
 use Game\Entity\Factory;
 use Game\Entity\UnknownTowerTypeException;
@@ -9,26 +10,33 @@ use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
 {
+    private $coordinates;
+
+    public function setUp()
+    {
+        $this->coordinates = new Coordinates(100,200);
+    }
+
     public function testBuildReturnsTower()
     {
-        $this->assertInstanceOf(Base::class, (new Factory())->build("Base"));
+        $this->assertInstanceOf(Base::class, (new Factory())->build("Base", $this->coordinates));
     }
 
     public function testBuildThrowsOnUnknownTowerType()
     {
         $this->expectException(UnknownTowerTypeException::class);
-        (new Factory())->build("UnknownTowerType");
+        (new Factory())->build("UnknownTowerType", $this->coordinates);
     }
 
     public function testBuildIncrementsTowerId()
     {
         $factory = new Factory();
 
-        $base = $factory->build("Base");
+        $base = $factory->build("Base", $this->coordinates);
 
         $this->assertEquals(0, $base->getId());
 
-        $laser = $factory->build("Laser");
+        $laser = $factory->build("Laser", $this->coordinates);
 
         $this->assertEquals(1, $laser->getId());
     }
