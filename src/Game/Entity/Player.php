@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace Game\Entity;
 
@@ -24,14 +24,14 @@ class Player
         Base $base,
         Towers $towers,
         Coordinates $coordinates,
-        int $funds = 5000
+        int $funds = 10000
     )
     {
         $this->id          = $id;
         $this->name        = $name;
         $this->base        = $base;
-        $this->towers      = $towers;
         $this->funds       = $funds;
+        $this->towers      = $towers;
         $this->coordinates = $coordinates;
     }
 
@@ -50,14 +50,14 @@ class Player
         return $this->base;
     }
 
-    public function getTowers(): Towers
-    {
-        return $this->towers;
-    }
-
     public function getFunds(): int
     {
         return $this->funds;
+    }
+
+    public function getTowers(): Towers
+    {
+        return $this->towers;
     }
 
     public function getCoordinates(): Coordinates
@@ -68,5 +68,10 @@ class Player
     public function getHealthPoints(): int
     {
         return $this->base->getHealthPoints();
+    }
+
+    public function setFunds(int $amount)
+    {
+        $this->funds = $amount;
     }
 }
