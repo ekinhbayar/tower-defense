@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace Game\Entity\Tower;
 
@@ -9,12 +9,12 @@ class Factory
 {
     private $lastTowerId = -1;
 
-    public function build(string $towerType, Coordinates $coordinates): Tower
+    public function build(string $type, Coordinates $coordinates): Tower
     {
-        $towerType = __NAMESPACE__ . "\\" . $towerType;
+        $towerType = __NAMESPACE__ . "\\" . $type;
 
         if (!$this->isValidType($towerType)) {
-            throw new UnknownTowerTypeException($towerType);
+            throw new UnknownTowerTypeException($type . " is not a valid tower type.");
         }
 
         $this->lastTowerId++;
