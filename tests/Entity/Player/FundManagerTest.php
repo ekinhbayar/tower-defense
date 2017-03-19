@@ -2,45 +2,72 @@
 
 namespace Game\Tests\Entity\Player;
 
-use Game\Entity\Coordinates;
+use Game\Entity\Buyable;
 use Game\Entity\Enemy;
-use Game\Entity\Player\PlayerFactory;
-use Game\Entity\Tower\Factory;
+use Game\Entity\Player;
 use Game\Entity\Player\FundManager;
 use PHPUnit\Framework\TestCase;
 
 class FundManagerTest extends TestCase
 {
-    private $tower;
-
-    private $player;
-
-    private $enemy;
-
     private $fundManager;
 
     public function setUp()
     {
         $this->fundManager = new FundManager();
-
-        $coordinates = $this->createMock(Coordinates::class);
-
-        $this->player = (new PlayerFactory())->build('player0', $coordinates);
-
-        $this->tower  = (new Factory())->build("Flame", $coordinates);
-
-        $this->enemy  = new Enemy($coordinates, 100, 1000);
     }
 
     public function testProcessSale()
     {
-        $this->fundManager->processSale($this->tower, $this->player);
-        $this->assertEquals(9000, $this->player->getFunds());
+        $player = $this->createMock(Player::class);
+
+        $player
+            ->expects($this->once())
+            ->method('getFunds')
+            ->will($this->returnValue(1000))
+        ;
+
+        $player
+            ->expects($this->once())
+            ->method('setFunds')
+            ->with(900)
+        ;
+
+        $buyable = $this->createMock(Buyable::class);
+
+        $buyable
+            ->expects($this->once())
+            ->method('getUnitPrice')
+            ->will($this->returnValue(100))
+         ;
+
+        $this->fundManager->processSale($buyable, $player);
     }
 
     public function testProcessEnemyDefeat()
     {
-        $this->fundManager->processEnemyDefeat($this->enemy, $this->player);
-        $this->assertEquals(10100, $this->player->getFunds());
+        $player = $this->createMock(Player::class);
+
+        $player
+            ->expects($this->once())
+            ->method('getFunds')
+            ->will($this->returnValue(1000))
+        ;
+
+        $player
+            ->expects($this->once())
+            ->method('setFunds')
+            ->with(1100)
+        ;
+
+        $enemy = $this->createMock(Enemy::class);
+
+        $enemy
+            ->expects($this->once())
+            ->method('getHitPoints')
+            ->will($this->returnValue(100))
+        ;
+
+        $this->fundManager->processEnemyDefeat($enemy, $player);
     }
 }

@@ -2,29 +2,33 @@
 
 namespace Game\Entity;
 
-use Game\Entity\Player\PlayerFactory;
 use Game\Entity\Tower\Base;
 use PHPUnit\Framework\TestCase;
 
 class PlayerTest extends TestCase
 {
     private $player;
-    private $coordinates;
 
     public function setUp()
     {
-        $this->coordinates = new Coordinates(100,200);
-        $this->player      = (new PlayerFactory())->build('player0', $this->coordinates);
+        $this->player = new Player(
+            1,
+            'Player1',
+            $this->createMock(Base::class),
+            $this->createMock(Towers::class),
+            $this->createMock(Coordinates::class),
+            100
+        );
     }
 
     public function testGetId()
     {
-        $this->assertEquals(0, $this->player->getId());
+        $this->assertEquals(1, $this->player->getId());
     }
 
     public function testGetName()
     {
-        $this->assertSame("player0", $this->player->getName());
+        $this->assertSame('Player1', $this->player->getName());
     }
 
     public function testGetBase()
@@ -34,7 +38,7 @@ class PlayerTest extends TestCase
 
     public function testGetFunds()
     {
-        $this->assertEquals(10000, $this->player->getFunds());
+        $this->assertEquals(100, $this->player->getFunds());
     }
 
     public function testGetTowers()
@@ -49,12 +53,30 @@ class PlayerTest extends TestCase
 
     public function testGetHealthPoints()
     {
-        $this->assertEquals(4000, $this->player->getHealthPoints());
+        $base = $this->createMock(Base::class);
+
+        $base
+            ->expects($this->once())
+            ->method('getHealthPoints')
+            ->will($this->returnValue(200))
+        ;
+
+        $player = new Player(
+            1,
+            'Player1',
+            $base,
+            $this->createMock(Towers::class),
+            $this->createMock(Coordinates::class),
+            100
+        );
+
+        $this->assertEquals(200, $player->getHealthPoints());
     }
 
     public function testSetFunds()
     {
         $this->player->setFunds(30000);
+
         $this->assertEquals(30000, $this->player->getFunds());
     }
 }

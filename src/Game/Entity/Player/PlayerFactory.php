@@ -11,12 +11,23 @@ class PlayerFactory
 {
     private $lastPlayerId = -1;
 
+    private $towerFactory;
+
+    public function __construct(Factory $towerFactory)
+    {
+        $this->towerFactory = $towerFactory;
+    }
+
     public function build(string $name, Coordinates $coordinates): Player
     {
         $this->lastPlayerId++;
 
-        $base = (new Factory())->build("Base", $coordinates);
-
-        return new Player($this->lastPlayerId, $name, $base, new Towers(new Factory()), $coordinates);
+        return new Player(
+            $this->lastPlayerId,
+            $name,
+            $this->towerFactory->build('Base', $coordinates),
+            new Towers($this->towerFactory),
+            $coordinates
+        );
     }
 }
