@@ -13,12 +13,12 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Game\\": "src/"
+        "psr-4": {
+            "Game\\": "src/Game/"
         }
     },
     "autoload-dev": {
-        "psr-0": {
+        "psr-4": {
             "Game\\Tests\\": "tests/"
         }
     },
