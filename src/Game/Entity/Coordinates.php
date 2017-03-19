@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace Game\Entity;
 
@@ -22,5 +22,10 @@ class Coordinates
     public function getY()
     {
         return $this->y;
+    }
+
+    public function getAsArray()
+    {
+        return [$this->x, $this->y];
     }
 }
