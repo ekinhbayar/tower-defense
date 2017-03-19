@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Game\Tests\Entity;
+namespace Game\Tests\Entity\Tower;
 
 use Game\Entity\Coordinates;
 use Game\Entity\Tower\Base;
