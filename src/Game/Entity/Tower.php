@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace Game\Entity;
 
-abstract class Tower
+abstract class Tower implements Buyable
 {
     private $id;
 
@@ -58,7 +58,7 @@ abstract class Tower
     {
         return [
             'id'           => $this->id,
-            'coordinates'  => $this->coordinates,
+            'coordinates'  => $this->coordinates->getAsArray(),
             'unitPrice'    => $this->unitPrice,
             'hitPoints'    => $this->hitPoints,
             'healthPoints' => $this->healthPoints
