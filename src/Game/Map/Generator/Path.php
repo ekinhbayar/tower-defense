@@ -55,11 +55,10 @@ class Path
             new Coordinates(0, 200),
             new Coordinates(0, 440),
             new Coordinates(880, 0),
-            new Coordinates(0, 0),
-            new Coordinates(1180, 0),
-            new Coordinates(0, 780),
+            new Coordinates(20, 0),
+            new Coordinates(1180, 20),
+            new Coordinates(20, 780),
             new Coordinates(1100, 780),
-            new Coordinates(0, 780),
             new Coordinates(1180, 400),
         ];
     }
@@ -193,7 +192,7 @@ class Path
         $newTile = $currentTile->moveDown();
 
         if ($newTile->getPositionY() === 780 && ($newTile->getPositionX() !== $player->getX() || $newTile->getPositionY() !== $player->getY())) {
-            $chances['bottom'] -= 5;
+            $chances['bottom'] = 0;
         }
 
         return $chances;
