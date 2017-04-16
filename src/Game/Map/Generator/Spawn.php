@@ -26,13 +26,13 @@ class Spawn
         $heightParts = (int) ($height / 5);
 
         $this->x = [
-            'start' => $widthParts * 2,
-            'end'   => $widthParts * 3,
+            $widthParts * 2,
+            $widthParts * 3,
         ];
 
         $this->y = [
-            'start' => $heightParts * 2,
-            'end'   => $heightParts * 3,
+            $heightParts * 2,
+            $heightParts * 3,
         ];
     }
 
