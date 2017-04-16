@@ -38,6 +38,20 @@ class Spawn
 
     public function generate(): Coordinates
     {
-        return new Coordinates(random_int(...$this->x), random_int(...$this->y));
+        return new Coordinates(
+            random_int(...$this->snapToGrid($this->x)) * 20,
+            random_int(...$this->snapToGrid($this->y)) * 20
+        );
+    }
+
+    private function snapToGrid(array $positions): array
+    {
+        $modStart = $positions[0] % 20;
+        $modEnd   = $positions[1] % 20;
+
+        return [
+            ($positions[0] + ($modStart < (20 / 2) ? -$modStart : 20 - $modStart)) / 20,
+            ($positions[1] + ($modEnd < (20 / 2) ? -$modEnd : 20 - $modEnd)) / 20,
+        ];
     }
 }
