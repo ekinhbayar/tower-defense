@@ -16,7 +16,7 @@ TowerDefense.UserInterface.Path = (function() {
             this.loaded = true;
         });
 
-        this.tile.src = 'img/road.jpg';
+        this.tile.src = 'img/path.png';
     }
 
     Path.prototype.draw = function(canvas) {
