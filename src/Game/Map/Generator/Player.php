@@ -36,7 +36,7 @@ class Player
 
     public function generate(): Coordinates
     {
-        $edge = self::EDGES[random_int(0, 4)];
+        $edge = self::EDGES[random_int(0, 3)];
 
         return $this->getPositionAlongEdge($edge);
     }
