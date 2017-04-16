@@ -48,13 +48,13 @@ class Player
                 return new Coordinates(random_int(20, $this->width - 20), 0);
 
             case 'bottom':
-                return new Coordinates(random_int(20, $this->width - 20), $this->width - 20);
+                return new Coordinates(random_int(20, $this->width - 20), $this->height - 20);
 
             case 'left':
                 return new Coordinates(0, random_int(20, $this->height - 20));
 
             case 'right':
-                return new Coordinates($this->height - 20, random_int(20, $this->height - 20));
+                return new Coordinates($this->width - 20, random_int(20, $this->height - 20));
         }
     }
 }
