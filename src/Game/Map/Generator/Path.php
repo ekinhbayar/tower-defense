@@ -90,7 +90,7 @@ class Path
         $possibilities = $this->biasTowardsNewTiles($possibilities, $currentTile, $playerPath);
         //$possibilities = $this->removeChanceOfHittingTheEdge($possibilities, $currentTile, $player);
         $possibilities = $this->removeChanceOfGoingOutsideTheMap($possibilities, $currentTile);
-        //$possibilities = $this->removeChanceOfIntroducingBlocks($possibilities, $currentTile);
+        $possibilities = $this->removeChanceOfIntroducingBlocks($possibilities, $currentTile);
 
         $newDirection = random_int(0, array_sum($possibilities));
 
