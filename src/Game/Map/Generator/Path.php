@@ -43,43 +43,21 @@ class Path
         $this->tileSize = $tileSize;
     }
 
-    private function provideDummySpawn(): Coordinates
+    public function generate(array $players, Coordinates $spawnPoint)
     {
-        return new Coordinates(400, 500);
-    }
-
-    private function provideDummyPlayers(): array
-    {
-        return [
-            new Coordinates(600, 0),
-            new Coordinates(0, 200),
-            new Coordinates(0, 440),
-            new Coordinates(880, 0),
-            new Coordinates(20, 0),
-            new Coordinates(1180, 20),
-            new Coordinates(20, 780),
-            new Coordinates(1100, 780),
-            new Coordinates(1180, 400),
-        ];
-    }
-
-    public function generate()
-    {
-        $players = $this->provideDummyPlayers();
-
         while ($player = array_shift($players)) {
-            $this->generatePathToPlayer($player);
+            $this->generatePathToPlayer($player, $spawnPoint);
         }
 
         return $this->path;
     }
 
-    private function generatePathToPlayer(Coordinates $player)
+    private function generatePathToPlayer(Coordinates $player, Coordinates $spawnPoint)
     {
         $playerPath = [];
 
         $pathTile = new PathTile(
-            new Coordinates($this->provideDummySpawn()->getX(), $this->provideDummySpawn()->getY())
+            new Coordinates($spawnPoint->getX(), $spawnPoint->getY())
         );
 
         $playerPath[$this->convertTileToKey($pathTile)] = $pathTile;
