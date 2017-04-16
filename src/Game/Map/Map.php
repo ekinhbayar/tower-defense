@@ -52,10 +52,10 @@ class Map
     {
         $path = [];
 
-        foreach ($this->paths as $path) {
+        foreach ($this->paths as $pathTile) {
             $path[] = [
-                'x' => $path->getPositionX(),
-                'y' => $path->getPositionY(),
+                'x' => $pathTile->getPositionX(),
+                'y' => $pathTile->getPositionY(),
             ];
         }
 
