@@ -26,6 +26,9 @@ class Coordinates
 
     public function getAsArray()
     {
-        return [$this->x, $this->y];
+        return [
+            'x' => $this->x,
+            'y' => $this->y,
+        ];
     }
 }
